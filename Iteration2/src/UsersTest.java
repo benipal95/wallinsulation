@@ -93,32 +93,36 @@ public class UsersTest {
 	}
 
 	@Test
-	public void testExportData() {
-		ObjectOutputStream objout1;
-		FileOutputStream fout1;
+	public void testExportData() throws IOException {
+
+		String FN = "Sean";
+		String LN = "Raghed";
+		int state = 1; //customer
+		String UN = "seanraghed01";
+		String pass = "qwerty12345";
+		String email = "sean.raghed@yahoo.com";
+		Users beforeTest = new Users(FN, LN, email, state,
+				UN, pass);
 		
-		try {
-			fout = new FileOutputStream("profile.ser",true);
-			objout = new ObjectOutputStream(fout);
-			fout1 = new FileOutputStream("profile.ser",true);
-			objout1 = new ObjectOutputStream(fout1);
-			objout.writeObject(seanTest);
-			objout1.writeObject(seanTest);
-			assertEquals(fout, fout1);
-			assertEquals(objout, objout1);
-			objout.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	seanTest.exportData();
+	beforeTest.exportData();
+	assertNotNull(seanTest.exportData());
 	}
 
-	@Test
+	@Test 
 	public void testImportData() {
-		assertNotNull(seanTest.getUsername());
-	}
 
+		String FN = "Sean";
+		String LN = "Raghed";
+		int state = 1; //customer
+		String UN = "seanraghed01";
+		String pass = "qwerty12345";
+		String email = "sean.raghed@yahoo.com";
+		Users beforeTest = new Users(FN, LN, email, state,
+				UN, pass);
+		
+	seanTest.importData();
+	beforeTest.importData();
+	assertNotNull(seanTest.importData());
+	}
 }
